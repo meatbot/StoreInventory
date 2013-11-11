@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.projecttest.PrefrencesActivity"
+            android:name="com.example.projecttest.PreferencesActivity"
             android:label="@string/title_activity_prefrences" >
         </activity>
     </application>
