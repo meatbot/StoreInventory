@@ -5,5 +5,11 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_prefrences">Prefrences</string>
+    
+    <string name="main_status_default">Press button to scan for code</string>
+    <string name="main_result_default">No matching codes found</string>
+    
+    <string name="parse_app_id">UrHJhbTtN0R5xhWqlMtfmA9xczouIPUZ0sPdiKdx</string>
+    <string name="parse_client_id">tvxO270t8M8JlCHEHsSYdLjIz3CH3jKbqmpzVDeQ</string>
 
 </resources>
