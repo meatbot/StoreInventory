@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
 				try {
 					Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 					intent.putExtra("SCAN_MODE", "ONE_D_MODE");
+					startActivityForResult(intent, 0);
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					Toast.makeText(getApplicationContext(), "ERROR: " + ex, 1).show();
@@ -48,13 +49,13 @@ public class MainActivity extends Activity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		if (requestCode == 0) {
-			if (resultCode == 0) {
+			if (resultCode == RESULT_OK) {
 				tvStatus.setText(intent.getStringExtra("SCAN_RESULT_FORMAT"));
-				tvResult.setText(intent.getStringExtra("SCAN_RESULTS"));
+				tvResult.setText(intent.getStringExtra("SCAN_RESULT"));
 			} else if (resultCode == RESULT_CANCELED) {
 				tvStatus.setText(R.string.main_status_default);
 				tvResult.setText("Scan cancelled");
-			}
+			} 
 		}
 	}
 }
