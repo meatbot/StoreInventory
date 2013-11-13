@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >  
+        
+        <ListPreference
+            android:key="itemFontSize"
+            android:id="@+id/preferences_fontSize"
+            android:entries="@array/preferences_fontsize_entries"
+            android:entryValues="@array/preferences_fontsize_entryValues"
+            android:title="Item Font Size" android:enabled="true"/>   
+    
+    
+</PreferenceScreen>

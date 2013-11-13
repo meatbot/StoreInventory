@@ -1,15 +1,43 @@
 package com.example.projecttest;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
-import android.app.Activity;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.view.Menu;
 
-public class PreferencesActivity extends Activity {
+//Font size in Item View
+//Number of items in incremental search
+//Where to store local db - App folder or User's choice on SD card
+//		Have checkbox for App folder, when unchecked enable choose folder option.
+//Update interval - Daily
+//      Would be nice to receive updates of items that have changed on a regular basis.
+//TextView to set db url
+//At first have it locked. Must open group or check box to enable editing of the field.
+//		http://acp.winply.ca/acp/exportinv.php - GZipped ~1/4 of the size
+
+public class PreferencesActivity 
+	extends PreferenceActivity
+	implements OnSharedPreferenceChangeListener
+{
+	SharedPreferences sharedPrefs;
+	Preference itemFontSize;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_preferences);
+		addPreferencesFromResource(R.xml.preferences);
+		
+		sharedPrefs = getPreferences(MODE_PRIVATE);
+		
+		itemFontSize = findPreference("itemFontSize");
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		itemFontSize.setSummary(sharedPrefs.getString("itemFontSize", "12dp").replace("dp", ""));
 	}
 
 	@Override
@@ -18,5 +46,12 @@ public class PreferencesActivity extends Activity {
 		getMenuInflater().inflate(R.menu.preferences, menu);
 		return true;
 	}
+	
+	public void onSharedPreferenceChanged(SharedPreferences sharedPrefs, String key) {
+		if (key.equals("itemFontSize")) {			
+			itemFontSize.setSummary(sharedPrefs.getString(key, ""));
+		}
+	}
+	
 
 }
