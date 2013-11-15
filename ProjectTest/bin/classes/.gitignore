@@ -1,3 +1,5 @@
 /com
 /.gitignore
-/DatabaseHelper.class
+/MainActivity.class
+/PreferencesActivity.class
+/UpdateDBActivity.class

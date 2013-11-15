@@ -1,3 +1,4 @@
+package com.example.storeinventory;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,4 @@
+package com.example.storeinventory;
 
 public class InventoryItem {
 	

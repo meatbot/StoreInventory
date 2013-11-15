@@ -1,4 +1,5 @@
-package com.example.projecttest;
+package com.example.storeinventory;
+
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;

@@ -7,22 +7,23 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-
-    <TextView
-        android:id="@+id/main_status_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom = "20dp"
-        android:text="@string/main_status_default" />
     
+    <EditText
+        android:id="@+id/main_query_et"
+        android:layout_height="30dp"
+        android:layout_width="fill_parent"
+        android:textSize="10sp"
+        android:layout_marginBottom="10dp"
+        android:hint="Partial Item Number, Catalog Number, or Description" />
+      
     <TextView
         android:id="@+id/main_result_tv"
-        android:layout_below="@id/main_status_tv"
+        android:layout_below="@id/main_query_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="@string/main_result_default" />
-
+    
     <Button
         android:id="@+id/main_scan_btn"
         android:layout_width="fill_parent"

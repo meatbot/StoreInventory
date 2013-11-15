@@ -1,4 +1,5 @@
-package com.example.projecttest;
+package com.example.storeinventory;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

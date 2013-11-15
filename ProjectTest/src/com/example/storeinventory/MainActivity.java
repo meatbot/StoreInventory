@@ -1,14 +1,18 @@
-package com.example.projecttest;
+package com.example.storeinventory;
+
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +20,8 @@ public class MainActivity extends Activity {
 	
 	SharedPreferences sharedPrefs = getPreferences(MODE_PRIVATE);
 	
-	TextView tvStatus, tvResult;
+	EditText etQuery;
+	TextView tvResult;
 	Button btnScan;
 
 	@Override
@@ -24,7 +29,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		tvStatus = (TextView)findViewById(R.id.main_status_tv);
+		etQuery = (EditText)findViewById(R.id.main_query_et);
 		tvResult = (TextView)findViewById(R.id.main_result_tv);
 		btnScan = (Button)findViewById(R.id.main_scan_btn);
 		
@@ -40,7 +45,21 @@ public class MainActivity extends Activity {
 					Toast.makeText(getApplicationContext(), "ERROR: " + ex, 1).show();
 				}
 			}
-		});		
+		});
+		
+		etQuery.setOnKeyListener(new OnKeyListener() {
+
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				if (v.getId() == R.id.main_query_et) {
+					//conditions under which to run query
+					//timer?
+					//N number of characters entered?
+					//must be asynchronous.
+				}
+				return false;
+			}			
+		});
 	}
 
 	@Override
@@ -66,10 +85,10 @@ public class MainActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		if (requestCode == 0) {
 			if (resultCode == RESULT_OK) {
-				tvStatus.setText(intent.getStringExtra("SCAN_RESULT_FORMAT"));
-				tvResult.setText(intent.getStringExtra("SCAN_RESULT"));
+				//Query for results
+				etQuery.setText(intent.getStringExtra("SCAN_RESULT"));
 			} else if (resultCode == RESULT_CANCELED) {
-				tvStatus.setText(R.string.main_status_default);
+				etQuery.setText("");
 				tvResult.setText("Scan cancelled");
 			} 
 		}
