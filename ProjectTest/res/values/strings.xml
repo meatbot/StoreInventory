@@ -41,5 +41,7 @@
         <item>17sp</item>
         <item>18sp</item>
     </string-array>
+    
+    <string name="preferences_dbUrlString">http://acp.winply.ca/acp/exportinv.php</string>
 
 </resources>

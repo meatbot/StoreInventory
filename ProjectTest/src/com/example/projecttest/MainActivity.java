@@ -2,6 +2,7 @@ package com.example.projecttest;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
+	SharedPreferences sharedPrefs = getPreferences(MODE_PRIVATE);
 	
 	TextView tvStatus, tvResult;
 	Button btnScan;

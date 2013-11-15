@@ -5,10 +5,13 @@
         
         <ListPreference
             android:key="itemFontSize"
-            android:id="@+id/preferences_fontSize"
             android:entries="@array/preferences_fontsize_entries"
             android:entryValues="@array/preferences_fontsize_entryValues"
-            android:title="Item Font Size" android:enabled="true"/>   
+            android:title="Item Font Size" android:enabled="true"/>  
+			
+        <EditTextPreference 
+            android:key="dbUrlString"
+            android:title="Database URL String" />
     
     
 </PreferenceScreen>

@@ -5,6 +5,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 
 //Font size in Item View
@@ -23,21 +24,28 @@ public class PreferencesActivity
 {
 	SharedPreferences sharedPrefs;
 	Preference itemFontSize;
+	Preference editDbUrlString;
+	Preference dbUrlString;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferences);
 		
-		sharedPrefs = getPreferences(MODE_PRIVATE);
+		sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+		sharedPrefs.registerOnSharedPreferenceChangeListener(this);
 		
 		itemFontSize = findPreference("itemFontSize");
+		editDbUrlString = findPreference("editDbUrlString");
+		dbUrlString = findPreference("dbUrlString");
 	}
 	
 	@Override
 	protected void onResume() {
-		super.onResume();
+		super.onResume();		
+		
 		itemFontSize.setSummary(sharedPrefs.getString("itemFontSize", "12dp").replace("dp", ""));
+		dbUrlString.setSummary(sharedPrefs.getString("dbUrlString", getResources().getString(R.string.preferences_dbUrlString)));
 	}
 
 	@Override
@@ -47,11 +55,14 @@ public class PreferencesActivity
 		return true;
 	}
 	
+	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPrefs, String key) {
 		if (key.equals("itemFontSize")) {			
-			itemFontSize.setSummary(sharedPrefs.getString(key, ""));
+			itemFontSize.setSummary(sharedPrefs.getString(key, "").replace("dp",  ""));
+		} else if (key.equals("dbUrlString")) {
+			dbUrlString.setSummary(sharedPrefs.getString(key, getResources().getString(R.string.preferences_dbUrlString)));
 		}
 	}
+}
 	
 
-}
